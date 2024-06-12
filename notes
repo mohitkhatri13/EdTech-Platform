@@ -1,0 +1,6 @@
+ step1 - npm i react-router-dom 
+this is used for making routes 
+wrap tha app in index.js in a BroiwerRouter component 
+
+step2 - npm i react-icons 
+used for various used in react
