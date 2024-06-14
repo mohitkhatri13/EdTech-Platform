@@ -107,27 +107,26 @@ const Home = () => {
             codeColor={"text-yellow-25"}
           />
         </div>
-        <ExploreMore/>
+        <ExploreMore />
       </div>
 
       {/* section - 2 */}
-      
+
       <div className="bg-pure-greys-5 border  text-richblack-700 relative mt-[-100px]">
         <div className="homepage_bg h-[400px] ">
           <div className="w-11/12 max-w-maxContent flex  items-center gap-5 mx-auto  justify-center ">
             <div className="  flex gap-7  text-white mt-[100px] ">
-               <div className=" flex gap-7    mt-[200px]">
-              <CTAButton active={true} linkto={"/signup"}>
-                <div className="flex items-center gap-1">
-                  Explore Full Catalog
-                  <FaArrowRight />
-                </div>
-              </CTAButton>
-             
+              <div className=" flex gap-7    mt-[200px]">
+                <CTAButton active={true} linkto={"/signup"}>
+                  <div className="flex items-center gap-1">
+                    Explore Full Catalog
+                    <FaArrowRight />
+                  </div>
+                </CTAButton>
 
-              <CTAButton active={false} linkto={"/signup"}>
-                <div>Learn More</div>
-              </CTAButton>
+                <CTAButton active={false} linkto={"/signup"}>
+                  <div>Learn More</div>
+                </CTAButton>
               </div>
             </div>
           </div>
@@ -158,14 +157,14 @@ const Home = () => {
       {/* Section-3 */}
       <div className="w-11/12  mx-auto max-w-maxContent flex items-center flex-col justify-between gap-8 bg-richblack-900 text-white  ">
         <InstructorSection />
-        <h2 className="text-center text-4xl font-semibold mt-10">
+        <h2 className="text-center text-4xl font-semibold m-10">
           Review from other learners
         </h2>
         {/* Review slider here */}
       </div>
 
       {/* Footer */}
-      <Footer /> 
+      <Footer />
     </div>
   );
 };
