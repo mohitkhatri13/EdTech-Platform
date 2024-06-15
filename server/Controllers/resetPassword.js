@@ -11,7 +11,7 @@ exports.resetPasswordToken = async (req, res) => {
         success: false,
         message: "Please Enter your Email First ",
       });
-    }
+    } 
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({
@@ -64,7 +64,8 @@ exports.resetPassword = async (req, res) => {
     const { password, confirmpassword, token } = req.body;
 
     //validation
-    if (password != confirmpassword) {
+    console.log(password)
+    if (password !== confirmpassword) {
       return res.json({
         success: false,
         message: "Password not matched"
