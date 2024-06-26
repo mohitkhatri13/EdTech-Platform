@@ -21,13 +21,13 @@ function SignupForm() {
     lastName: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmpassword: "",
   })
 
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  const { firstName, lastName, email, password, confirmPassword } = formData
+  const { firstName, lastName, email, password, confirmpassword } = formData
 
   // Handle input fields, when some value changes
   const handleOnChange = (e) => {
@@ -41,7 +41,7 @@ function SignupForm() {
   const handleOnSubmit = (e) => {
     e.preventDefault()
 
-    if (password !== confirmPassword) {
+    if (password !== confirmpassword) {
       toast.error("Passwords Do Not Match")
       return
     }
@@ -62,7 +62,7 @@ function SignupForm() {
       lastName: "",
       email: "",
       password: "",
-      confirmPassword: "",
+      confirmpassword: "",
     })
     setAccountType(ACCOUNT_TYPE.STUDENT)
   }
@@ -175,8 +175,8 @@ function SignupForm() {
             <input
               required
               type={showConfirmPassword ? "text" : "password"}
-              name="confirmPassword"
-              value={confirmPassword}
+              name="confirmpassword"
+              value={confirmpassword}
               onChange={handleOnChange}
               placeholder="Confirm Password"
               style={{

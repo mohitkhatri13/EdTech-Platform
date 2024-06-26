@@ -11,7 +11,7 @@ const UpdatePassword = () => {
   const [formData, setFormData] = useState({
     password: "",
     confirmpassword: "",
-  });
+  }); 
 
   const [showPassword, setshowPassword] = useState(false);
   const [showconfirmPassword, setshowConfirmPassword] = useState(false);
@@ -20,10 +20,10 @@ const UpdatePassword = () => {
   const { password, confirmpassword } = formData;
 
   const handleOnChange = (e) => {
-    setFormData((prevdata) => ({
+    setFormData((prevdata) => ({ 
       ...prevdata,
       [e.target.name]: e.target.value,
-    }));
+    }));  
   };
   const handleOnSubmit = (e) => {
     e.preventDefault();

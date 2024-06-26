@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
         required:true
      },
      contactNumber:{
-        required:true,
+      //   required:true,
         type:Number,
      },
      additionalDetails:{

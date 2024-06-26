@@ -1,6 +1,5 @@
 import {toast} from "react-hot-toast"
-
-import { setLoading , setToken } from "../../Slice/authSlice"
+import { setLoading , setSignupData, setToken } from "../../Slice/authSlice"
 import { resetCart } from "../../Slice/cartSlice"
 import { setUser } from "../../Slice/profileSlice"
 import { apiConnector } from "../apiconnector"
@@ -16,7 +15,7 @@ const {
   
   export function sendOtp(email, navigate) {
     return async (dispatch) => {
-      console.log(email)
+      // console.log(email)
       const toastId = toast.loading("Loading...")
       dispatch(setLoading(true))
       try {
@@ -24,6 +23,7 @@ const {
           email:email,
           checkUserPresent: true,
         })
+       
         console.log("SENDOTP API RESPONSE............", response)
   
         console.log(response.data.success)
@@ -49,7 +49,7 @@ const {
     lastName,
     email,
     password,
-    confirmPassword,
+    confirmpassword,
     otp,
     navigate
   ) {
@@ -63,9 +63,10 @@ const {
           lastName,
           email,
           password,
-          confirmPassword,
+          confirmpassword,
           otp,
         })
+
   
         console.log("SIGNUP API RESPONSE............", response)
   

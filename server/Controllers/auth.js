@@ -71,6 +71,7 @@ exports.signup = async (req, res) => {
       contactNumber,
       otp,
     } = req.body;
+   
 
     if (
       !firstName ||
@@ -103,6 +104,8 @@ exports.signup = async (req, res) => {
     const recentOTP = await OTP.find({ email })
       .sort({ createdAt: -1 })
       .limit(1);
+      // console.log(otp);
+      // console.log(recentOTP);
      
     // console.log(recentOTP);
 
@@ -149,7 +152,7 @@ exports.signup = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(200).json({
+    return res.status(400).json({
       success: false,
       message: "Something Went Wrong",
     });

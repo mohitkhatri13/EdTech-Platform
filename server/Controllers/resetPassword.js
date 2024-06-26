@@ -64,7 +64,7 @@ exports.resetPassword = async (req, res) => {
     const { password, confirmpassword, token } = req.body;
 
     //validation
-    console.log(password)
+    // console.log(password)
     if (password !== confirmpassword) {
       return res.json({
         success: false,
