@@ -1,17 +1,18 @@
-import React from 'react'
-import HighlightText from "../Components/core/HomePage/HighlightText"
-import BannerImage1 from "../assets/Images/aboutus1.webp"
-import BannerImage2 from "../assets/Images/aboutus3.webp"
-import BannerImage3 from "../assets/Images/aboutus1.webp"
-import FoundingStory from "../assets/Images/FoundingStory.png"
-import Quote from '../Components/core/AboutPage/Quote'
-import StatsComponenet from '../Components/core/AboutPage/stats'
-import LearningGrid from '../Components/core/AboutPage/LearningGrid'
-import ContactFormSection from '../Components/core/AboutPage/ContactFormSection'
+import React from "react";
+import HighlightText from "../Components/core/HomePage/HighlightText";
+import BannerImage1 from "../assets/Images/aboutus1.webp";
+import BannerImage2 from "../assets/Images/aboutus3.webp";
+import BannerImage3 from "../assets/Images/aboutus1.webp";
+import FoundingStory from "../assets/Images/FoundingStory.png";
+import Quote from "../Components/core/AboutPage/Quote";
+import StatsComponenet from "../Components/core/AboutPage/stats";
+import LearningGrid from "../Components/core/AboutPage/LearningGrid";
+import ContactFormSection from "../Components/core/AboutPage/ContactFormSection";
+import Footer from "../Components/common/Footer"
 const About = () => {
   return (
     <div>
-         <section className="bg-richblack-700">
+      <section className="bg-richblack-700">
         <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-center text-white">
           <header className="mx-auto py-20 text-4xl font-semibold lg:w-[70%]">
             Driving Innovation in Online Education for a
@@ -32,14 +33,14 @@ const About = () => {
         </div>
       </section>
 
-        <section className="border-b border-richblack-700">
+      <section className="border-b border-richblack-700">
         <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-richblack-500">
           <div className="h-[100px] "></div>
           <Quote />
         </div>
       </section>
 
-        <section>
+      <section>
         <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-richblack-500">
           <div className="flex flex-col items-center gap-10 lg:flex-row justify-between">
             <div className="my-24 flex lg:w-[50%] flex-col gap-10">
@@ -88,10 +89,15 @@ const About = () => {
             </div>
             <div className="my-24 flex lg:w-[40%] flex-col gap-10">
               <h1 className="bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text text-4xl font-semibold lg:w-[70%] ">
-              Our Mission
+                Our Mission
               </h1>
               <p className="text-base font-medium text-richblack-300 lg:w-[95%]">
-              Our mission goes beyond just delivering courses online. We wanted to create a vibrant community of learners, where individuals can connect, collaborate, and learn from one another. We believe that knowledge thrives in an environment of sharing and dialogue, and we foster this spirit of collaboration through forums, live sessions, and networking opportunities.
+                Our mission goes beyond just delivering courses online. We
+                wanted to create a vibrant community of learners, where
+                individuals can connect, collaborate, and learn from one
+                another. We believe that knowledge thrives in an environment of
+                sharing and dialogue, and we foster this spirit of collaboration
+                through forums, live sessions, and networking opportunities.
               </p>
             </div>
           </div>
@@ -100,10 +106,12 @@ const About = () => {
       <StatsComponenet />
       <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
         <LearningGrid />
-        <ContactFormSection/>
+        <ContactFormSection />
       </section>
+      <div className=" mt-40"></div>
+      < Footer/>
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

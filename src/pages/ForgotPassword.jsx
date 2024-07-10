@@ -8,7 +8,7 @@ const ForgotPassword = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(getPasswordResetToken(email, setEmail));
+    dispatch(getPasswordResetToken(email, setEmailSent));
   };
 
   const { loading } = useSelector((state) => state.auth);

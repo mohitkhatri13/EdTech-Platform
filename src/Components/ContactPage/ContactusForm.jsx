@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
-import CountryCode from "../../data/countrycode.json"
-import { apiConnector } from "../../services/apiconnector"
-import { contactusEndpoint } from "../../services/apis"
-import Footer from "../common/Footer"
+import CountryCode from "../../data/countrycode.json";
+import { apiConnector } from "../../services/apiconnector";
+import { contactusEndpoint } from "../../services/apis";
+import Footer from "../common/Footer";
 const ContactUsForm = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitSuccessful },
-  } = useForm()
+  } = useForm();
 
   const submitContactForm = async (data) => {
     // console.log("Form Data - ", data)
     try {
-      setLoading(true)
+      setLoading(true);
       const res = await apiConnector(
         "POST",
         contactusEndpoint.CONTACT_US_API,
         data
-      )
-    // const res = {status:"Ok"}
-      console.log("Email Res - ", res)
-      setLoading(false)
+      );
+      // const res = {status:"Ok"}
+      console.log("Email Res - ", res);
+      setLoading(false);
     } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
-      setLoading(false)
+      console.log("ERROR MESSAGE - ", error.message);
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     if (isSubmitSuccessful) {
@@ -40,9 +40,9 @@ const ContactUsForm = () => {
         lastname: "",
         message: "",
         phoneNo: "",
-      })
+      });
     }
-  }, [reset, isSubmitSuccessful])
+  }, [reset, isSubmitSuccessful]);
 
   return (
     <form
@@ -59,7 +59,7 @@ const ContactUsForm = () => {
             name="firstname"
             id="firstname"
             placeholder="Enter first name"
-            className="form-style text-black"
+            className="form-style text-black px-2"
             {...register("firstname", { required: true })}
           />
           {errors.firstname && (
@@ -76,8 +76,8 @@ const ContactUsForm = () => {
             type="text"
             name="lastname"
             id="lastname"
-            placeholder="Enter last name"
-            className="form-style text-black"
+            placeholder="Enter last name "
+            className="form-style text-black px-2"
             {...register("lastname")}
           />
         </div>
@@ -92,11 +92,11 @@ const ContactUsForm = () => {
           name="email"
           id="email"
           placeholder="Enter email address"
-          className="form-style text-black"
+          className="form-style text-black px-2"
           {...register("email", { required: true })}
         />
         {errors.email && (
-          <span className="-mt-1 text-[12px] text-yellow-100">
+          <span className=" mt-1 text-[12px] text-yellow-100">
             Please enter your Email address.
           </span>
         )}
@@ -120,9 +120,9 @@ const ContactUsForm = () => {
               {CountryCode.map((ele, i) => {
                 return (
                   <option key={i} value={ele.code}>
-                    {ele.code} -{ele.country}
+                    {ele.code}-{ele.country}
                   </option>
-                )
+                );
               })}
             </select>
           </div>
@@ -132,7 +132,7 @@ const ContactUsForm = () => {
               name="phonenumber"
               id="phonenumber"
               placeholder="12345 67890"
-              className="form-style text-black"
+              className="form-style text-black px-2"
               {...register("phoneNo", {
                 required: {
                   value: true,
@@ -161,12 +161,12 @@ const ContactUsForm = () => {
           cols="30"
           rows="7"
           placeholder="Enter your message here"
-          className="form-style text-black"
+          className="form-style text-black px-2"
           {...register("message", { required: true })}
         />
         {errors.message && (
           <span className="-mt-1 text-[12px] text-yellow-100">
-            Please enter your Message.
+            Please enter your Message here.
           </span>
         )}
       </div>
@@ -182,10 +182,9 @@ const ContactUsForm = () => {
       >
         Send Message
       </button>
-      <Footer />
+     
     </form>
-    
-  )
-}
+  );
+};
 
-export default ContactUsForm
+export default ContactUsForm;

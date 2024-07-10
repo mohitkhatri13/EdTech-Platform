@@ -1,5 +1,5 @@
 import {toast} from "react-hot-toast"
-import { setLoading , setSignupData, setToken } from "../../Slice/authSlice"
+import { setLoading , setToken } from "../../Slice/authSlice"
 import { resetCart } from "../../Slice/cartSlice"
 import { setUser } from "../../Slice/profileSlice"
 import { apiConnector } from "../apiconnector"
@@ -95,19 +95,23 @@ const {
           password,
         })
   
-        console.log("LOGIN API RESPONSE............", response)
+        console.log("LOGIN API RESPONSE............", response?.data?.existinguser)
+        console.log(response);
   
         if (!response.data.success) {
-          throw new Error(response.data.message)
+          throw new Error(response?.data?.message)
         }
   
         toast.success("Login Successful")
-        dispatch(setToken(response.data.token))
-        const userImage = response.data?.user?.image
-          ? response.data.user.image
-          : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
-        dispatch(setUser({ ...response.data.user, image: userImage }))
-        localStorage.setItem("token", JSON.stringify(response.data.token))
+        dispatch(setToken(response?.data?.token))
+        const userImage = response.data?.existinguser?.image
+          ? response.data?.existinguser?.image
+          : `https://api.dicebear.com/5.x/initials/svg?seed=${response?.firstName} ${response?.lastName}`
+        dispatch(setUser({ ...response?.data?.existinguser, image: userImage }))
+        // we store the user in local storage because on reloading the web page the data get lost so we need 
+        // to store the session in local storage
+        localStorage.setItem("token", JSON.stringify(response?.data?.token))
+        localStorage.setItem("user", JSON.stringify(response?.data?.existinguser))
         navigate("/dashboard/my-profile")
       } catch (error) {
         console.log("LOGIN API ERROR............", error)

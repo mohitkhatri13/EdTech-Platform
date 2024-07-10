@@ -4,12 +4,17 @@ import Home from "./pages/Home.jsx"
 import NavBar from "./Components/common/Navbar.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import OpenRoute from "./Components/core/HomePage/Auth/OpenRoute.jsx";
-
 import Login from "./pages/Login.jsx"
 import Signup from "./pages/Signup.jsx"
 import UpdatePassword from "./pages/UpdatePassword.jsx";
 import VerifyEmail from "./pages/VerifyEmail.jsx";
 import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import PrivateRoute from "./Components/core/HomePage/Auth/PrivateRoute.jsx";
+import MyProfile from "./Components/core/Dashboard/MyProfile.jsx";
+import Error from "./pages/Error.jsx";
+
 function App() {
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex-col font-inter">
@@ -60,15 +65,31 @@ function App() {
           }
         />
 
-<Route
+        <Route
           path="about"
           element={
             <OpenRoute>
-              <About/>
+              <About />
             </OpenRoute>
           }
         />
+        <Route path="/contact" element={<Contact />} />
 
+
+
+
+        <Route element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }>
+          <Route path="/dashboard/my-profile" element={<MyProfile />} />
+
+        </Route>
+        <Route
+          path="*"
+          element={<Error />}
+        />
       </Routes>
     </div>
   );
