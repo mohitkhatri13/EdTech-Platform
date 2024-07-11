@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 require("dotenv").config();
 
-const User = require("../models/usermodel");
+// const User = require("../models/usermodel");
 
 exports.auth = async (req, res, next) => {
   try {
@@ -10,8 +10,9 @@ exports.auth = async (req, res, next) => {
     const token =
       req.cookies.token ||
       req.body.token ||
-      req.header("Authorisation").replace("Bearer", "");
-
+      req.header("Authorization")?.replace("Bearer ", "");
+      console.log("token after render");
+     console.log(token);
     if (!token) {
       return res.status(401).json({
         success: false,
