@@ -1,11 +1,12 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
 import OtpInput from "react-otp-input";
-import { useNavigate } from "react-router-dom";
-import { sendOtp } from "../services/operations/authAPI";
-import { useState , useEffect } from "react";
 import { Link } from "react-router-dom";
-import {signUp}  from "../services/operations/authAPI";
+import { BiArrowBack } from "react-icons/bi";
+import { RxCountdownTimer } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
+import { sendOtp, signUp } from "../services/operations/authAPI";
+import { useNavigate } from "react-router-dom";
+
 const VerifyEmail = () => {
   const { signupData, loading } = useSelector((state) => state.auth);
   const [otp, setOtp] = useState("");
@@ -16,53 +17,33 @@ const VerifyEmail = () => {
     if (!signupData) {
       navigate("/signup");
     }
-  });
-  // console.log(signupData);
+  }, [signupData, navigate]);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    const {
-      accountType,
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmpassword
-    } = signupData;
-       
-    // console.log(accountType);
-    // console.log(firstName);
-    // console.log(lastName);
-    // console.log(email);
-    // console.log(password);
-    // console.log(confirmPassword);
-    // console.log(otp);
-
-   
+    const { accountType, firstName, lastName, email, password, confirmpassword } = signupData;
 
     dispatch(
-      signUp(
-        accountType,
-        firstName,
-        lastName,
-        email,
-        password,
-        confirmpassword,
-        otp,
-        navigate
-      )
+      signUp(accountType, firstName, lastName, email, password, confirmpassword, otp, navigate)
     );
   };
+
   return (
-    <div>
+    <div className="min-h-[calc(100vh-3.5rem)] grid place-items-center">
       {loading ? (
-        <div>Loading...</div>
+        <div>
+          <div className="spinner"></div>
+        </div>
       ) : (
-        <div className="text-richblack-25 flex flex-col items-center justify-center bg-richblack-800">
-          <div>Verify Email</div>
-          <p>A verification code has been sent to you. Enter the code below</p>
+        <div className="max-w-[500px] p-4 lg:p-8">
+          <h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]">
+            Verify Email
+          </h1>
+          <p className="text-[1.125rem] leading-[1.625rem] my-4 text-richblack-100">
+            A verification code has been sent to you. Enter the code below
+          </p>
           <form onSubmit={handleOnSubmit}>
-          <OtpInput
+            <OtpInput
               value={otp}
               onChange={setOtp}
               numInputs={6}
@@ -81,17 +62,27 @@ const VerifyEmail = () => {
                 gap: "0 6px",
               }}
             />
-            <button type="submit">Verify Email</button>
+            <button
+              type="submit"
+              className="w-full bg-yellow-50 py-[12px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"
+            >
+              Verify Email
+            </button>
           </form>
-          <div>
-            <Link to="/login">
-              <p>Back to Login</p>
+          <div className="mt-6 flex items-center justify-between">
+            <Link to="/signup">
+              <p className="text-richblack-5 flex items-center gap-x-2">
+                <BiArrowBack /> Back To Signup
+              </p>
             </Link>
+            <button
+              className="flex items-center text-blue-100 gap-x-2"
+              onClick={() => dispatch(sendOtp(signupData.email))}
+            >
+              <RxCountdownTimer />
+              Resend it
+            </button>
           </div>
-
-          <button onClick={() => dispatch(sendOtp(signupData.email))}>
-            Resend it
-          </button>
         </div>
       )}
     </div>
