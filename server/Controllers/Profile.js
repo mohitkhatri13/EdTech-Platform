@@ -1,16 +1,15 @@
 const Profile = require("../models/profilemodel");
 const User = require("../models/usermodel")
-const Course = require("../models/coursemodel")
 const { uploadImageToCloudinary } = require("../utils/ImageUploader")
 
 exports.updateProfile = async (req, res) => {
   try {
     //get data
-    const { dateofbirth = "", gender, about = "", secondarycontactnumber = "" } = req.body;
+    const { dateOfBirth="" , gender, about = "", contactNumber } = req.body;
     // get user id
     const id = req.user.id
     //validation
-    if (!secondarycontactnumber || !gender) {
+    if (!contactNumber || !gender) {
       return res.status(400).json({
         success: false,
         message: "All required fields are required"
@@ -18,23 +17,24 @@ exports.updateProfile = async (req, res) => {
     }
 
     //find profile 
+    
     const userdetail = await User.findById(id);
-    const profileid = await userdetail.additionalDetails;
+    // console.log(userdetail);
+    const profile = await Profile.findById(userdetail.additionalDetails);
+      //  console.log(profile);
 
-    const profileDetails = await Profile.findById(profileid);
 
     //update it
-    profileDetails.dateofbirth = dateofbirth;
-    profileDetails.gender = gender,
-    profileDetails.about = about,
-    profileDetails.secondarycontactnumber = secondarycontactnumber
-
-    await profileDetails.save()
+    profile.dateOfBirth = dateOfBirth;
+    profile.about = about;    
+    profile.contactNumber = contactNumber;
+    profile.gender = gender;
+    await profile.save();
     //return response
     return res.status(200).json({
       success: true,
       message: "Profile updated successfully",
-      profileDetails
+      profile
     })
   }
   catch (error) {
@@ -74,7 +74,7 @@ exports.deleteAccount = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "User deleted successfully",
-      
+
     })
   }
   catch (error) {

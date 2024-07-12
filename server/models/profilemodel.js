@@ -5,14 +5,14 @@ const profileSchema = new mongoose.Schema({
         type:String,
         require:true
      },
-     dateofbirth:{
+     dateOfBirth:{
         type:String
      },
      about:{
         type:String,
         trim:true
      },
-     secondarycontactnumber:{
+     contactNumber:{
         type:Number,
         trim:true
      }
