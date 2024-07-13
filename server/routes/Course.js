@@ -1,85 +1,107 @@
-// Import the required modules
+// // Import the required modules
 const express = require("express")
 const router = express.Router()
 
-// Import the Controllers
+// // Import the Controllers
 
-// Course Controllers Import
+// // Course Controllers Import
 const {
   createCourse,
   getAllCourses,
   getCourseDetails,
-} = require("../controllers/Course")
+  getFullCourseDetails,
+  editCourse,
+  getInstructorCourses,
+  deleteCourse,
+} = require("../Controllers/Course")
 
+// // Tags Controllers Import
 
-// Categories Controllers Import
+// // Categories Controllers Import
 const {
-    showAllCategories,
-    createCategory,
-    categoryPageDetails,
-} = require("../controllers/Category")
+  showAllCategories,
+  createCategory,
+  categoryPageDetails,
+} = require("../Controllers/Category")
 
-// Sections Controllers Import
+// // Sections Controllers Import
 const {
   createSection,
   updateSection,
   deleteSection,
 } = require("../controllers/Section")
 
-// Sub-Sections Controllers Import
+// // Sub-Sections Controllers Import
 const {
   createSubSection,
   updateSubSection,
   deleteSubSection,
 } = require("../controllers/Subsection")
 
-// Rating Controllers Import
+// // Rating Controllers Import
 const {
   createRating,
   getAverageRating,
-  getAllRating,
-} = require("../controllers/ratingandreview")
+  getAllRatingReview,
+} = require("../controllers/RatingandReview")
 
-// Importing Middlewares
+
+const {
+  updateCourseProgress,
+  getProgressPercentage,
+} = require("../Controllers/courseProgress")
+// // Importing Middlewares
 const { auth, isInstructor, isStudent, isAdmin } = require("../middlewares/Authentication")
 
-// ********************************************************************************************************
-//                                      Course routes
-// ********************************************************************************************************
+// // ********************************************************************************************************
+// //                                      Course routes
+// // ********************************************************************************************************
 
-// Courses can Only be Created by Instructors
+// // Courses can Only be Created by Instructors
 router.post("/createCourse", auth, isInstructor, createCourse)
-//Add a Section to a Course
+// // Edit Course routes
+router.post("/editCourse", auth, isInstructor, editCourse)
+// //Add a Section to a Course
 router.post("/addSection", auth, isInstructor, createSection)
-// Update a Section
+// // Update a Section
 router.post("/updateSection", auth, isInstructor, updateSection)
-// Delete a Section
+// // Delete a Section
 router.post("/deleteSection", auth, isInstructor, deleteSection)
-// Edit Sub Section
+// // Edit Sub Section
 router.post("/updateSubSection", auth, isInstructor, updateSubSection)
-// Delete Sub Section
+// // Delete Sub Section
 router.post("/deleteSubSection", auth, isInstructor, deleteSubSection)
-// Add a Sub Section to a Section
+// // Add a Sub Section to a Section
 router.post("/addSubSection", auth, isInstructor, createSubSection)
-// Get all Registered Courses
+// // Get all Courses Under a Specific Instructor
+router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
+// // Get all Registered Courses
 router.get("/getAllCourses", getAllCourses)
-// Get Details for a Specific Courses
+// // Get Details for a Specific Courses
 router.post("/getCourseDetails", getCourseDetails)
+// // Get Details for a Specific Courses
+router.post("/getFullCourseDetails", auth, getFullCourseDetails)
+// // To Update Course Progress
+router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress)
+// // To get Course Progress
+router.post("/getProgressPercentage", auth, isStudent, getProgressPercentage)
+// // Delete a Course
+router.delete("/deleteCourse", deleteCourse)
 
-// ********************************************************************************************************
-//                                      Category routes (Only by Admin)
-// ********************************************************************************************************
-// Category can Only be Created by Admin
-// TODO: Put IsAdmin Middleware here
+// // ********************************************************************************************************
+// //                                      Category routes (Only by Admin)
+// // ********************************************************************************************************
+// // Category can Only be Created by Admin
+// // TODO: Put IsAdmin Middleware here
 router.post("/createCategory", auth, isAdmin, createCategory)
 router.get("/showAllCategories", showAllCategories)
 router.post("/getCategoryPageDetails", categoryPageDetails)
 
-// ********************************************************************************************************
-//                                      Rating and Review
-// ********************************************************************************************************
+// // ********************************************************************************************************
+// //                                      Rating and Review
+// // ********************************************************************************************************
 router.post("/createRating", auth, isStudent, createRating)
 router.get("/getAverageRating", getAverageRating)
-router.get("/getReviews", getAllRating)
+router.get("/getReviews", getAllRatingReview)
 
 module.exports = router

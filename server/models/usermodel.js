@@ -33,6 +33,14 @@ const userSchema = new mongoose.Schema({
       //   required:true,
         type:Number,
      },
+     active: {
+      type: Boolean,
+      default: true,
+    },
+    approved: {
+      type: Boolean,
+      default: true,
+    },
      additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,
@@ -59,5 +67,5 @@ const userSchema = new mongoose.Schema({
       type:Date
      },
      
-})
+} , {timestamps:true})
 module.exports = mongoose.model("User" , userSchema);
