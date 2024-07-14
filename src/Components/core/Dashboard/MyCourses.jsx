@@ -16,7 +16,7 @@ export default function MyCourses() {
     const fetchCourses = async () => {
       const result = await fetchInstructorCourses(token)
       if (result) {
-        setCourses(result);
+        setCourses(result)
       }
     }
     fetchCourses()
