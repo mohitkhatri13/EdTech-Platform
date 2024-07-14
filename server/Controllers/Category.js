@@ -120,4 +120,4 @@ exports.categoryPageDetails = async (req, res) => {
         message: "Internal server error",
         error: error.message,
       })
-    }
+    }}
