@@ -100,7 +100,7 @@ export default function NestedView({ handleChangeEditSectionName }) {
               {/* Render All Sub Sections Within a Section */}
               {section.subSection.map((data) => (
                 <div
-                  key={data?._id}
+                  key={data?._id} 
                   onClick={() => setViewSubSection(data)}
                   className="flex cursor-pointer items-center justify-between gap-x-3 border-b-2 border-b-richblack-600 py-2"
                 >

@@ -51,8 +51,8 @@ export const fetchCourseDetails = async (courseId) => {
     })
     console.log("COURSE_DETAILS_API API RESPONSE............", response)
 
-    if (!response.data.success) {
-      throw new Error(response.data.message)
+    if (!response?.data?.success) {
+      throw new Error(response?.data?.message)
     }
     result = response.data
   } catch (error) {
@@ -62,6 +62,7 @@ export const fetchCourseDetails = async (courseId) => {
   }
   toast.dismiss(toastId)
   //   dispatch(setLoading(false));
+  // console.log(result);
   return result
 }
 
@@ -74,11 +75,12 @@ export const fetchCourseCategories = async () => {
     if (!response?.data?.success) {
       throw new Error("Could Not Fetch Course Categories")
     }
-    result = response?.data?.data
+    result = response?.data
   } catch (error) {
     console.log("COURSE_CATEGORY_API API ERROR............", error)
     toast.error(error.message)
   }
+  // console.log(result);
   return result
 }
 

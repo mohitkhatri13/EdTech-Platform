@@ -6,36 +6,26 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IoCartOutline } from "react-icons/io5";
 import ProfileDropdown from "../core/HomePage/Auth/ProfileDropdown";
-// import { apiConnector } from "../../services/apiconnector";
-// import { categories } from "../../services/apis";
+import { useState, useEffect } from "react";
+import { apiConnector } from "../../services/apiconnector";
+import { categories } from "../../services/apis";
 import { IoIosArrowDown } from "react-icons/io";
-const subLinks = [
-  {
-    title: "python",
-    link: "/catalog/python",
-  },
-  {
-    title: "web dev",
-    link: "/catalog/web-development",
-  },
-];
+
 
 const Navbar = () => {
-  // const [subLinks , setSubLinks] = useState([]);
-
-  // const fetchSublinks = async()=>{
-  //     try{
-  //             const result  = await apiConnector("GET" , categories.CATEGORIES_API);
-  //                 setSubLinks(result.data.data);
-  //                 console.log("Printing sublinks reault " , result)
-  //     }
-  //     catch(error){
-  //         console.log("Could not fetch the catalog list ")
-  //     }
-  //    }
-  // useEffect(()=>{
-  //          fetchSublinks();
-  // } , [])
+  const [subLinks, setSubLinks] = useState([]);
+  const fetchSublinks = async () => {
+    try {
+      const result = await apiConnector("GET", categories.CATEGORIES_API);
+      setSubLinks(result?.data?.allCategories);
+      console.log("Printing sublinks reault ", result?.data?.allCategories);
+    } catch (error) {
+      console.log("Could not fetch the catalog list ");
+    }
+  };
+  useEffect(() => {
+    fetchSublinks();
+  }, []);
 
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
@@ -70,9 +60,16 @@ const Navbar = () => {
                        rotate-45 "
                       ></div>
                       {subLinks.length ? (
-                        subLinks.map((subLink, index) => (
-                          <Link to={`${subLink.link}`} key={index}>
-                            <p>{subLink.title}</p>
+                        subLinks.map((subLink, i) => (
+                          <Link
+                            to={`/catalog/${subLink.name
+                              .split(" ")
+                              .join("-")
+                              .toLowerCase()}`}
+                            className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
+                            key={i}
+                          >
+                            <p>{subLink.name}</p>
                           </Link>
                         ))
                       ) : (

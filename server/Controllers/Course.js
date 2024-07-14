@@ -13,6 +13,7 @@ exports.createCourse = async (req, res) => {
         //check for instructor
         const userId = req.user.id;
         //  fetch data
+        console.log(userId);
         const { courseName, courseDescription, whatyouwilllearn, price, category, tag: _tag, status,
             instructions: _instructions, } = req.body;
         //get thumbnail
@@ -21,6 +22,17 @@ exports.createCourse = async (req, res) => {
         const tag = JSON.parse(_tag)
         const instructions = JSON.parse(_instructions)
         //validation
+
+        console.log(courseName);
+        console.log(courseDescription);
+        console.log(whatyouwilllearn);
+        console.log(price);
+        console.log(category);
+        console.log(tag.length);
+        console.log(status);
+        console.log(instructions.length);
+        console.log(thumbnail);
+
         if (!courseName ||
             !courseDescription ||
             !whatyouwilllearn ||
@@ -74,6 +86,7 @@ exports.createCourse = async (req, res) => {
             thumbnail: thumbnailImage.secure_url,
             status: status,
             instructions,
+            tag
         })
         // add the new course to the user schema of instructor directly because instructor not need to buy it 
         console.log(newCourse)

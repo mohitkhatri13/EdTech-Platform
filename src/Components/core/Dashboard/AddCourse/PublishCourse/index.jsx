@@ -24,7 +24,7 @@ export default function PublishCourse() {
   }, [])
 
   const goBack = () => {
-    dispatch(setStep(2))
+    dispatch(setStep(2)) 
   }
 
   const goToCourses = () => {
@@ -48,7 +48,7 @@ export default function PublishCourse() {
     formData.append("courseId", course._id)
     const courseStatus = getValues("public")
       ? COURSE_STATUS.PUBLISHED
-      : COURSE_STATUS.DRAFT
+      : COURSE_STATUS.DRAFT 
     formData.append("status", courseStatus)
     setLoading(true)
     const result = await editCourseDetails(formData, token)
@@ -97,6 +97,6 @@ export default function PublishCourse() {
           <IconBtn disabled={loading} text="Save Changes" />
         </div>
       </form>
-    </div>
+    </div> 
   )
 }

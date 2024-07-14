@@ -35,7 +35,9 @@ export default function CourseInformationForm() {
   useEffect(() => {
     const getCategories = async () => {
       setLoading(true)
-      const categories = await fetchCourseCategories()
+      let categories = await fetchCourseCategories()
+      categories = categories?.allCategories
+      // console.log(categories?.allCategories.length);
       if (categories.length > 0) {
         // console.log("categories", categories)
         setCourseCategories(categories)
@@ -44,7 +46,7 @@ export default function CourseInformationForm() {
     }
     // if form is in edit mode
     if (editCourse) {
-      // console.log("data populated", editCourse)
+      console.log("data populated", editCourse)
       setValue("courseTitle", course.courseName)
       setValue("courseShortDesc", course.courseDescription)
       setValue("coursePrice", course.price)
@@ -66,7 +68,7 @@ export default function CourseInformationForm() {
       currentValues.courseTitle !== course.courseName ||
       currentValues.courseShortDesc !== course.courseDescription ||
       currentValues.coursePrice !== course.price ||
-      // currentValues.courseTags.toString() !== course.tag.toString() ||
+      currentValues.courseTags.toString() !== course.tag.toString() ||
       currentValues.courseBenefits !== course.whatYouWillLearn ||
       currentValues.courseCategory._id !== course.category._id ||
       currentValues.courseRequirements.toString() !==
@@ -80,7 +82,7 @@ export default function CourseInformationForm() {
 
   //   handle next button click
   const onSubmit = async (data) => {
-    // console.log(data)
+    console.log(data)
 
     if (editCourse) {
       // const currentValues = getValues()
@@ -141,11 +143,11 @@ export default function CourseInformationForm() {
     formData.append("courseDescription", data.courseShortDesc)
     formData.append("price", data.coursePrice)
     formData.append("tag", JSON.stringify(data.courseTags))
-    formData.append("whatYouWillLearn", data.courseBenefits)
+    formData.append("whatyouwilllearn", data.courseBenefits)
     formData.append("category", data.courseCategory)
     formData.append("status", COURSE_STATUS.DRAFT)
     formData.append("instructions", JSON.stringify(data.courseRequirements))
-    formData.append("thumbnailImage", data.courseImage)
+    formData.append("thumbnailimage", data.courseImage)
     setLoading(true)
     const result = await addCourseDetails(formData, token)
     if (result) {
