@@ -52,11 +52,11 @@ const Navbar = () => {
                     <IoIosArrowDown />
 
                     <div
-                      className=" z-20 invisible opacity-0 flex absolute top-[50%]  left-[50%] translate-x-[-70px] translate-y-[20px] flex-col rounded-md bg-richblack-5 p-4 text-richblack-900
-                     transition-all duration-200  lg:w-[200px] sm:w-[100px] group-hover:opacity-100 group-hover:visible"
+                      className=" z-20 invisible opacity-0 flex absolute top-[50%]  left-[50%] translate-x-[-70px] lg:translate-y-[20px] flex-col rounded-md bg-richblack-5 p-4 text-richblack-900
+                     transition-all duration-200  w-[200px] scale-75  lg:scale-100 group-hover:opacity-100 group-hover:visible"
                     >
                       <div
-                        className="  flex z-19 absolute top-[-2px] left-[50%] translate-x-[-14px] z-200 h-2 w-2 flex-col rounded-md bg-richblack-5 p-4 text-richblack-900
+                        className=" z-[-10] flex z-19 absolute top-[-2px] left-[50%] translate-x-[-14px] z-200 h-2 w-2 flex-col rounded-md bg-richblack-5 p-4 text-richblack-900
                        rotate-45 "
                       ></div>
                       {subLinks.length ? (
@@ -69,7 +69,7 @@ const Navbar = () => {
                             className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
                             key={i}
                           >
-                            <p>{subLink.name}</p>
+                            <p className="text-sm lg:text-[1rem]">{subLink.name}</p>
                           </Link>
                         ))
                       ) : (

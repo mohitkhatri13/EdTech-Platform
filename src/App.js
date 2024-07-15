@@ -22,6 +22,7 @@ import MyCourses from "./Components/core/Dashboard/MyCourses.jsx";
 import Settings from "./Components/core/Dashboard/Settings"
 import AddCourse from "./Components/core/Dashboard/AddCourse/index.js";
 import EditCourse from "./Components/core/Dashboard/EditCourse/index.jsx";
+import Catalog from "./pages/Catalog.jsx";
 function App() {
 
 const {user} = useSelector((state)=>state.profile)
@@ -30,7 +31,8 @@ const {user} = useSelector((state)=>state.profile)
     <div className="w-screen min-h-screen bg-richblack-900 flex-col font-inter">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="catalog/:catalogName" element={<Catalog/>}></Route>
         <Route
           path="signup"
           element={

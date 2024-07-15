@@ -3,7 +3,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table"
 
 import { setCourse, setEditCourse } from "../../../../Slice/courseSlice"
 // import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
+// import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 import { useState } from "react"
 import { FaCheck } from "react-icons/fa"
 import { FiEdit2 } from "react-icons/fi"
