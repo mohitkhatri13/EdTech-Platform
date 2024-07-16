@@ -4,6 +4,9 @@ import { setUser } from "../../Slice/profileSlice"
 import { apiConnector } from "../apiconnector"
 import { settingsEndpoints } from "../apis"
 import { logout } from "./authAPI"
+import { useEffect } from "react"
+import  user from "../../Slice/profileSlice"
+
 
 const {
   UPDATE_DISPLAY_PICTURE_API,
@@ -13,6 +16,7 @@ const {
 } = settingsEndpoints
 
 export function updateDisplayPicture(token, formData) {
+  
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     try {
@@ -27,7 +31,7 @@ export function updateDisplayPicture(token, formData) {
       )
       console.log(
         "UPDATE_DISPLAY_PICTURE_API API RESPONSE............",
-        response
+        response.data.data
       )
 
       if (!response.data.success) {

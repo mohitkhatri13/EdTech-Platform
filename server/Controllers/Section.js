@@ -103,7 +103,7 @@ exports.deleteSection = async (req, res) => {
       })
     }
     // Delete the associated subsections
-    await SubSection.deleteMany({ _id: { $in: section.subSection } })
+    await subSection.deleteMany({ _id: { $in: section.subSection } })
 
     await Section.findByIdAndDelete(sectionId)
 

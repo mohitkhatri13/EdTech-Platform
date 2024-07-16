@@ -10,7 +10,7 @@ import {
 } from "../../../../../services/operations/courseDetailsAPI"
 import { setCourse } from "../../../../../Slice/courseSlice"
 import IconBtn from "../../../../common/IconBtn"
-import Upload from "../"
+import Upload from "../Upload"
 
 export default function SubSectionModal({
   modalData,
@@ -93,6 +93,7 @@ export default function SubSectionModal({
 
   const onSubmit = async (data) => {
     // console.log(data)
+    console.log(data);
     if (view) return
 
     if (edit) {

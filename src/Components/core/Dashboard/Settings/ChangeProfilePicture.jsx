@@ -9,7 +9,8 @@ export default function ChangeProfilePicture() {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
-
+  
+    
   const [loading, setLoading] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const [previewSource, setPreviewSource] = useState(null);
@@ -39,14 +40,15 @@ export default function ChangeProfilePicture() {
 
   const handleFileUpload = () => {
     try {
-      console.log("uploading...");
+      // console.log("uploading...");
       setLoading(true);
       const formData = new FormData();
       formData.append("displayPicture", imageFile);
-      // console.log("formdata", formData)
+      console.log("formdata", formData)
       dispatch(updateDisplayPicture(token, formData)).then(() => {
         setLoading(false);
       });
+      
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
     }
