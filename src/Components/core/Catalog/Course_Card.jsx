@@ -8,17 +8,16 @@ import GetAvgRating from "../../../utils/avgRating"
 import RatingStars from "../../common/RatingStars"
 
 function Course_Card({ course, Height }) {
-  // const avgReviewCount = GetAvgRating(course.ratingAndReviews)
-  // console.log(course.ratingAndReviews)
+
   const [avgReviewCount, setAvgReviewCount] = useState(0)
   useEffect(() => {
     const count = GetAvgRating(course.ratingAndReviews)
     setAvgReviewCount(count)
   }, [course])
-  // console.log("count............", avgReviewCount)
+  
 
   return (
-    <>
+    <div>
       <Link to={`/courses/${course._id}`}>
         <div className="">
           <div className="rounded-lg">
@@ -35,7 +34,7 @@ function Course_Card({ course, Height }) {
             </p>
             <div className="flex items-center gap-2">
               <span className="text-yellow-5">{avgReviewCount || 0}</span>
-              {/* <ReactStars
+              <ReactStars
                 count={5}
                 value={avgReviewCount || 0}
                 size={20}
@@ -43,7 +42,7 @@ function Course_Card({ course, Height }) {
                 activeColor="#ffd700"
                 emptyIcon={<FaRegStar />}
                 fullIcon={<FaStar />}
-              /> */}
+              />
               <RatingStars Review_Count={avgReviewCount} />
               <span className="text-richblack-400">
                 {course?.ratingAndReviews?.length} Ratings
@@ -53,7 +52,7 @@ function Course_Card({ course, Height }) {
           </div>
         </div>
       </Link> 
-    </>
+      </div>
   )
 }
 

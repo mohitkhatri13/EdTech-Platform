@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-// import CourseCard from "../components/Catalog/CourseCard"
-// import CourseSlider from "../components/Catalog/CourseSlider"
 import Footer from "../Components/common/Footer";
 import Course_Card from "../Components/core/Catalog/Course_Card";
 import Course_Slider from "../Components/core/Catalog/Course_Slider";
 import { apiConnector } from "../services/apiconnector";
 import { categories } from "../services/apis";
-import { getCatalogPageData } from "../services/operations/pageAndComponntDatas";
+import { getCatalogPageData } from "../services/operations/pageAndComponentData";
 import Error from "./Error";
 
 function Catalog() {
@@ -23,16 +21,17 @@ function Catalog() {
     (async () => {
       try {
         const res = await apiConnector("GET", categories.CATEGORIES_API);
-        const category_id = res?.data?.data?.filter(
+        //  console.log(res?.data?.allCategories);
+        const category_id = res?.data?.allCategories?.filter(
           (ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName
         )[0]._id;
+        // console.log(category_id);
         setCategoryId(category_id);
       } catch (error) {
         console.log("Could not fetch Categories.", error);
       }
     })();
   }, [catalogName]);
-
 
   useEffect(() => {
     if (categoryId) {
@@ -59,7 +58,7 @@ function Catalog() {
   }
 
   return (
-    <>
+    <div>
       {/* Hero Section */}
       <div className=" box-content bg-richblack-800 px-4">
         <div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
@@ -80,7 +79,9 @@ function Catalog() {
 
       {/* Section 1 */}
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-        <div className="section_heading">Courses to get you started</div>
+        <div className=" section_heading text-white text-2xl">
+          Courses to get you started
+        </div>
         <div className="my-4 flex border-b border-b-richblack-600 text-sm">
           <p
             className={`px-4 py-2 ${
@@ -90,7 +91,7 @@ function Catalog() {
             } cursor-pointer`}
             onClick={() => setActive(1)}
           >
-            Most Populer
+            Most Popular
           </p>
           <p
             className={`px-4 py-2 ${
@@ -105,25 +106,27 @@ function Catalog() {
         </div>
         <div>
           <Course_Slider
-            Courses={catalogPageData?.data?.selectedCategory?.courses}
+            Courses={catalogPageData?.data?.selectedCategory?.course}
           />
         </div>
       </div>
       {/* Section 2 */}
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-        <div className="section_heading">
+        <div className="section_heading text-white text-2xl">
           Top courses in {catalogPageData?.data?.differentCategory?.name}
         </div>
         <div className="py-8">
           <Course_Slider
-            Courses={catalogPageData?.data?.differentCategory?.courses}
+            Courses={catalogPageData?.data?.differentCategory?.course}
           />
         </div>
       </div>
 
       {/* Section 3 */}
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-        <div className="section_heading">Frequently Bought</div>
+        <div className="section_heading text-white  , text-2xl">
+          Frequently Bought
+        </div>
         <div className="py-8">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {catalogPageData?.data?.mostSellingCourses
@@ -136,7 +139,7 @@ function Catalog() {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

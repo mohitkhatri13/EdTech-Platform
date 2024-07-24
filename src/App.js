@@ -23,16 +23,18 @@ import Settings from "./Components/core/Dashboard/Settings"
 import AddCourse from "./Components/core/Dashboard/AddCourse/index.js";
 import EditCourse from "./Components/core/Dashboard/EditCourse/index.jsx";
 import Catalog from "./pages/Catalog.jsx";
+import CourseDetails from "./pages/CourseDetails.jsx";
 function App() {
 
-const {user} = useSelector((state)=>state.profile)
+  const { user } = useSelector((state) => state.profile)
 
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex-col font-inter">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="catalog/:catalogName" element={<Catalog/>}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="catalog/:catalogName" element={<Catalog />}></Route>
+        <Route path="courses/:courseId" element={<CourseDetails />}></Route>
         <Route
           path="signup"
           element={
@@ -98,23 +100,23 @@ const {user} = useSelector((state)=>state.profile)
           <Route path="/dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/Settings" element={<Settings />} />
           {
-        user?.accountType === ACCOUNT_TYPE.STUDENT && (
-          <>
-         <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses />} />
-         <Route path="/dashboard/cart" element={<Cart />} />
-          </>
-        )
-      }
+            user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <>
+                <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses />} />
+                <Route path="/dashboard/cart" element={<Cart />} />
+              </>
+            )
+          }
 
-{
-        user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
-          <>
-         <Route path="/dashboard/add-course" element={<AddCourse />} />
-         <Route path="/dashboard/my-courses" element={<MyCourses />} />
-         <Route path="/dashboard/edit-course/:courseId" element={<EditCourse />} />
-          </>
-        )
-      }
+          {
+            user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+              <>
+                <Route path="/dashboard/add-course" element={<AddCourse />} />
+                <Route path="/dashboard/my-courses" element={<MyCourses />} />
+                <Route path="/dashboard/edit-course/:courseId" element={<EditCourse />} />
+              </>
+            )
+          }
         </Route>
 
 
