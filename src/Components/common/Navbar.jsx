@@ -4,13 +4,12 @@ import { Link, matchPath } from "react-router-dom";
 import { NavbarLinks } from "../../data/navbar-links";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { IoCartOutline } from "react-icons/io5";
 import ProfileDropdown from "../core/HomePage/Auth/ProfileDropdown";
 import { useState, useEffect } from "react";
 import { apiConnector } from "../../services/apiconnector";
 import { categories } from "../../services/apis";
 import { IoIosArrowDown } from "react-icons/io";
-
+import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
 
 const Navbar = () => {
   const [subLinks, setSubLinks] = useState([]);
@@ -101,7 +100,7 @@ const Navbar = () => {
         <div className="flex gap-x-4 items-center">
           {user && user?.accountType !== "Instructor" && (
             <Link to="/dashboard/cart" className="relative">
-              <IoCartOutline />
+              <AiOutlineShoppingCart className="text-2xl text-richblack-100 mt-3" />
               {totalItems > 0 && <span>{totalItems}</span>}
             </Link>
           )}
@@ -123,6 +122,9 @@ const Navbar = () => {
 
           {token !== null && <ProfileDropdown />}
         </div>
+        <button className="mr-4 md:hidden">
+          <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
+        </button>
       </div>
     </div>
   );
