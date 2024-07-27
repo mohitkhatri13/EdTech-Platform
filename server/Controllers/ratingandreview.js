@@ -1,6 +1,6 @@
 const RatingAndReview = require("../models/ratingandreview");
 const Course = require("../models/coursemodel");
-const { default: mongoose } = require("mongoose");
+const mongoose  = require("mongoose");
 
 // createRating
 exports.createRating = async (req, res) => {
@@ -13,7 +13,7 @@ exports.createRating = async (req, res) => {
         const courseDetails = await Course.findOne(
             {
                 _id: courseId,
-                studentsEnrolled: { $eleMatch: { $eq: userId } },
+                studentsEnrolled: { $elemMatch: { $eq: userId } },
             }
         );
         if (!courseDetails) {
@@ -46,12 +46,14 @@ exports.createRating = async (req, res) => {
 
             {
                 $push: {
-                    ratingandReview: ratingreview._id
+                    ratingAndReviews: ratingreview._id
                 }
             },
             { new: true }
         )
-        console.log(CourseUpdatedCourseDetail);
+        await courseDetails.save();
+
+        // console.log(CourseUpdatedCourseDetail);
         // return Response.
         return res.status(200).json({
             success: true,
@@ -117,11 +119,11 @@ exports.getAllRatingReview = async (req, res) => {
         const allreviews = await RatingAndReview.find({})
             .sort({ rating: "desc" })
             .populate({
-                path: "User",
-                select: "firstName ,lastName, email ,image",
+                path: "user",
+                select: "firstName lastName email image",
             })
             .populate({
-                path: "Course",
+                path: "course",
                 select: "courseName"
             })
             .exec()

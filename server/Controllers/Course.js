@@ -23,15 +23,15 @@ exports.createCourse = async (req, res) => {
     const instructions = JSON.parse(_instructions)
     //validation
 
-    console.log(courseName);
-    console.log(courseDescription);
-    console.log(whatyouwilllearn);
-    console.log(price);
-    console.log(category);
-    console.log(tag.length);
-    console.log(status);
-    console.log(instructions.length);
-    console.log(thumbnail);
+    // console.log(courseName);
+    // console.log(courseDescription);
+    // console.log(whatyouwilllearn);
+    // console.log(price);
+    // console.log(category);
+    // console.log(tag.length);
+    // console.log(status);
+    // console.log(instructions.length);
+    // console.log(thumbnail);
 
     if (!courseName ||
       !courseDescription ||

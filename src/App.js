@@ -24,6 +24,9 @@ import AddCourse from "./Components/core/Dashboard/AddCourse/index.js";
 import EditCourse from "./Components/core/Dashboard/EditCourse/index.jsx";
 import Catalog from "./pages/Catalog.jsx";
 import CourseDetails from "./pages/CourseDetails.jsx";
+import ViewCourse from "./pages/ViewCourse.jsx";
+import VideoDetails from "./Components/core/ViewCourse/VideoDetails.jsx";
+import Instructor from "./Components/core/Dashboard/Instructor.jsx";
 function App() {
 
   const { user } = useSelector((state) => state.profile)
@@ -82,14 +85,12 @@ function App() {
         <Route
           path="/about"
           element={
-            <OpenRoute>
+           
               <About />
-            </OpenRoute>
+            
           }
         />
         <Route path="/contact" element={<Contact />} />
-
-
 
 
         <Route element={
@@ -114,10 +115,31 @@ function App() {
                 <Route path="/dashboard/add-course" element={<AddCourse />} />
                 <Route path="/dashboard/my-courses" element={<MyCourses />} />
                 <Route path="/dashboard/edit-course/:courseId" element={<EditCourse />} />
+                <Route path="/dashboard/instructor" element={<Instructor/>}/>
               </>
             )
           }
         </Route>
+        
+
+        <Route
+          element={
+            <PrivateRoute>
+              <ViewCourse />
+            </PrivateRoute>
+          }
+        >
+          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <Route
+                path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
+                element={<VideoDetails />}
+              />
+            </>
+          )}
+        </Route>
+
+       
 
 
 
