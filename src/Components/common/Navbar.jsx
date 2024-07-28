@@ -10,8 +10,6 @@ import { apiConnector } from "../../services/apiconnector";
 import { categories } from "../../services/apis";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
-import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 const Navbar = () => {
   const { token } = useSelector((state) => state.auth);

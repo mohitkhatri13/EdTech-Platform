@@ -4,8 +4,7 @@ import { setUser } from "../../Slice/profileSlice"
 import { apiConnector } from "../apiconnector"
 import { settingsEndpoints } from "../apis"
 import { logout } from "./authAPI"
-import { useEffect } from "react"
-import  user from "../../Slice/profileSlice"
+
 
 
 const {

@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import CountryCode from "../../data/countrycode.json";
 import { apiConnector } from "../../services/apiconnector";
 import { contactusEndpoint } from "../../services/apis";
-import Footer from "../common/Footer";
 const ContactUsForm = () => {
   const [loading, setLoading] = useState(false);
   const {

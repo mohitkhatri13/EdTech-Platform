@@ -3,7 +3,6 @@ import { BiInfoCircle } from "react-icons/bi";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
 // // import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import ReactMarkdown from "react-markdown";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
@@ -25,7 +24,6 @@ const CourseDetails = () => {
   const { user } = useSelector((state) => state.profile);
   const { token } = useSelector((state) => state.auth);
   const { loading } = useSelector((state) => state.profile);
-  const { paymentLoading } = useSelector((state) => state.course);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { courseId } = useParams();
@@ -72,7 +70,7 @@ const CourseDetails = () => {
     setIsActive(
       !isActive.includes(id)
         ? isActive.concat([id])
-        : isActive.filter((e) => e != id)
+        : isActive.filter((e) => e !== id)
     );
   };
 
@@ -102,7 +100,7 @@ const CourseDetails = () => {
     return <Error />;
   }
   const {
-    _id: course_id,
+    // _id: course_id,
     courseName,
     courseDescription,
     thumbnail,
@@ -156,7 +154,7 @@ const CourseDetails = () => {
               <div className="text-md flex flex-wrap items-center gap-2">
                 <span className="text-yellow-25">{avgReviewCount}</span>
                 <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
-                {/* <span>{`(${ratingAndReviews.length} reviews)`}</span> */}
+                <span>{`(${ratingAndReviews.length} reviews)`}</span> 
                 <span>{`${studentsEnrolled.length} students enrolled`}</span>
               </div>
               <div>
