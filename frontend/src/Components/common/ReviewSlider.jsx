@@ -17,7 +17,6 @@ import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 // Get apiFunction and the endpoint
 import { apiConnector } from "../../services/apiconnector";
 import { ratingsEndpoints } from "../../services/apis";
-import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import "../../style.css";
 
