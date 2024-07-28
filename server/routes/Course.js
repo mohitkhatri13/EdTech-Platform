@@ -29,21 +29,21 @@ const {
   createSection,
   updateSection,
   deleteSection,
-} = require("../controllers/Section")
+} = require("../Controllers/Section")
 
 // // Sub-Sections Controllers Import
 const {
   createSubSection,
   updateSubSection,
   deleteSubSection,
-} = require("../controllers/Subsection")
+} = require("../Controllers/Subsection")
 
 // // Rating Controllers Import
 const {
   createRating,
   getAverageRating,
   getAllRatingReview,
-} = require("../controllers/RatingandReview")
+} = require("../Controllers/ratingandreview")
 
 
 const {
