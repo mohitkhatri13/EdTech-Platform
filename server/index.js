@@ -26,16 +26,13 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const {cloudinaryConnect} = require("./config/cloudinary") //doubt
 const fileUpload = require("express-fileupload");
-const dotenv = require("dotenv")
+// const dotenv = require("dotenv")
 
 
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-       origin:"http://localhost:3000",
-       credentials:true,
-}))
+app.use(cors())
 
 app.use(fileUpload({
        useTempFiles:true,
