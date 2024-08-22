@@ -27,8 +27,6 @@ const cors = require("cors");
 const {cloudinaryConnect} = require("./config/cloudinary") //doubt
 const fileUpload = require("express-fileupload");
 // const dotenv = require("dotenv")
-
-
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
