@@ -75,7 +75,7 @@ const Home = () => {
               linkto: "/login",
               active: false,
             }}
-            codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet\n"href="styles.css">/head>body>\nh1<a href="/">Header</a>\n/h1>\n nav<a href="maxi">\nHello`}
+            codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet\n"href="styles.css">/head>body>\nh1<a href="/">Header</a>\n/h1>\n nav<a href="maxi">\nHello\n<body>\nThis is the real world \n </body`}
             codeColor={"text-yellow-25"}
           />
         </div>
@@ -104,7 +104,7 @@ const Home = () => {
               linkto: "/login",
               active: false,
             }}
-            codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet\n"href="styles.css">/head>body>\nh1<a href="/">Header</a>\n/h1>\n nav<a href="maxi">\nHello`}
+            codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet\n"href="styles.css">/head>body>\nh1<a href="/">Header</a>\n/h1>\n nav<a href="maxi">\nHello\n<body>\nThis is the real world\n </body`}
             codeColor={"text-yellow-25"}
           />
         </div>
@@ -114,7 +114,8 @@ const Home = () => {
       {/* section - 2 */}
 
       <div className="bg-pure-greys-5 border  text-richblack-700 relative mt-[-100px]">
-        <div className="homepage_bg h-[400px] ">
+      {/* // homepage_bg is the class which we defined  */}
+        <div className="homepage_bg h-[400px] "> 
           <div className="w-11/12 max-w-maxContent flex  items-center gap-5 mx-auto  justify-center ">
             <div className="  flex gap-7  text-white mt-[100px] ">
               <div className=" flex gap-7    mt-[200px]">
@@ -150,6 +151,8 @@ const Home = () => {
               </CTAButton>
             </div>
           </div>
+
+
           <TimelineSection />
           <LearningLanguageSection />
         </div>
