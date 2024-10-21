@@ -17,11 +17,17 @@ const Navbar = () => {
   const { totalItems } = useSelector((state) => state.cart);
   const [subLinks, setSubLinks] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  
   const fetchSublinks = async () => {
     try {
       const result = await apiConnector("GET", categories.CATEGORIES_API);
       setSubLinks(result?.data?.allCategories);
+<<<<<<< HEAD
       console.log("Printing sublinks result ", result?.data?.allCategories);
+=======
+      // console.log("Printing sublinks result ", result?.data?.allCategories);
+>>>>>>> 8ddc9237af4ac26d1fd97fd6b1345784f47129c9
     } catch (error) {
       console.log("Could not fetch the catalog list ");
     }
@@ -35,7 +41,10 @@ const Navbar = () => {
   };
 
   const location = useLocation();
+  // for path matching to color change
   const matchRoute = (route) => {
+    // location.pathname  return - /about/more/...
+    //  to retrive only about use split method here not needed because path is single
     return matchPath({ path: route }, location.pathname);
   };
   return (
