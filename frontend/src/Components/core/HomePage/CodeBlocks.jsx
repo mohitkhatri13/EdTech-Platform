@@ -35,37 +35,6 @@ const CodeBlocks = ({
         </div>
       </div>
 
-<<<<<<< HEAD
-        <div className='flex gap-7 mt-7'>
-            <CTAButton active={ctabtn1.active} linkto={ctabtn1.linkto}>
-                <div className='flex gap-2 items-center'>
-                    {ctabtn1.btnText}
-                    <FaArrowRight/>
-                </div>
-            </CTAButton>
-
-            <CTAButton active={ctabtn2.active} linkto={ctabtn2.linkto}>  
-                    {ctabtn2.btnText}
-            </CTAButton>
-        </div>
-
-
-    </div>
-
-     {/*Section 2*/}
-     <div className=' h-fit  flex flex-row text-10[px] w-[100%] py-4 lg:w-[500px]'> 
-      
-
-        <div className='text-center flex flex-col w-[10%] text-richblack-400 font-inter font-bold'>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-            <p>6</p>
-            <p>7</p>
-            <p>8</p>
-=======
       {/*Section 2*/}
       <div className=" h-fit  flex flex-row text-10[px] w-[100%] py-4 lg:w-[500px]">
         {/*HW -> BG gradient*/}
@@ -82,7 +51,6 @@ const CodeBlocks = ({
           <p>9</p>
           <p>10</p>
           <p>11</p>
->>>>>>> 8ddc9237af4ac26d1fd97fd6b1345784f47129c9
         </div>
 
         <div

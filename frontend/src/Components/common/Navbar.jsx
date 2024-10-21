@@ -23,11 +23,11 @@ const Navbar = () => {
     try {
       const result = await apiConnector("GET", categories.CATEGORIES_API);
       setSubLinks(result?.data?.allCategories);
-<<<<<<< HEAD
+
       console.log("Printing sublinks result ", result?.data?.allCategories);
-=======
+
       // console.log("Printing sublinks result ", result?.data?.allCategories);
->>>>>>> 8ddc9237af4ac26d1fd97fd6b1345784f47129c9
+
     } catch (error) {
       console.log("Could not fetch the catalog list ");
     }
