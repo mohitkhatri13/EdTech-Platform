@@ -11,3 +11,8 @@ export const apiConnector  = (method , url , bodyData , headers , params  )=>{
     params:params? params:null
  })
 }
+// initially we use this for every single route 
+// const response = await axios.post(
+//    "https://food-restaurent-xi.vercel.app/api/v1/auth/login",
+//    formData
+//  );

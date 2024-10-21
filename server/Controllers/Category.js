@@ -19,7 +19,7 @@ exports.createCategory = async (req, res) => {
       description: description
     })
 
-    console.log(CategoryDetails);
+    // console.log(CategoryDetails);
     return res.status(200).json({
       success: true,
       message: "Category created Successfully"
@@ -57,13 +57,13 @@ exports.showAllCategories = async (req, res) => {
 exports.categoryPageDetails = async (req, res) => {
   try {
     const { categoryId } = req.body
-    console.log("hello");
-    console.log(categoryId);
+    // console.log("hello");
+    // console.log(categoryId);
     // Get courses for the specified category
     const selectedCategory = await Category.findById(categoryId)
       .populate({
-        path: "course",
-        match: { status: "Published" },
+        path: "course",  // here path refers to the field (course) which is present in db and we have to populate it 
+        match: { status: "Published" }, // Filters only published courses
         populate: "ratingAndReviews",
       })
       .exec()
@@ -86,7 +86,7 @@ exports.categoryPageDetails = async (req, res) => {
 
     // Get courses for other categories
     const categoriesExceptSelected = await Category.find({
-      _id: { $ne: categoryId },
+      _id: { $ne: categoryId },   // ne - not equal operator it return the all id except the given 
     })
 
     //  console.log(categoriesExceptSelected);
@@ -104,7 +104,7 @@ exports.categoryPageDetails = async (req, res) => {
         })
         .exec()
     }
-    console.log()
+    // console.log()
     // Get top-selling courses across all categories
     const allCategories = await Category.find()
       .populate({
@@ -112,7 +112,7 @@ exports.categoryPageDetails = async (req, res) => {
         match: { status: "Published" },
         populate: {
           path: "instructor"
-        }
+        }   // in this type of populate method we can also add more options like selecting specific fields  but inthe above one we are not able to more customize it 
       })
       .exec()
     const allCourses = allCategories.flatMap((category) => category.course)

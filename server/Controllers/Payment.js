@@ -12,7 +12,7 @@ const crypto = require("crypto");
 //order initiate
 exports.capturePayment = async (req, res) => {
     const { courses } = req.body
-    console.log(courses);
+    // console.log(courses);
     const userId = req.user.id;
     // console.log(req.user?.id);
 
@@ -31,8 +31,12 @@ exports.capturePayment = async (req, res) => {
                     .status(200)
                     .json({ success: false, message: "Could not find the Course" })
             }
+         
+                
 
             const uid = new mongoose.Types.ObjectId(userId)
+
+
             if (course.studentsEnrolled.includes(uid)) {
                 return res
                     .status(200)
@@ -56,7 +60,7 @@ exports.capturePayment = async (req, res) => {
     try {
         // Initiate the payment using Razorpay
         const paymentResponse = await instance.orders.create(options)
-        console.log(paymentResponse)
+        // console.log(paymentResponse)
         res.json({
             success: true,
             data: paymentResponse,
@@ -177,7 +181,7 @@ const enrollStudents = async (courses, userId, res) => {
                 { new: true }
             )
 
-            console.log("Enrolled student: ", enrolledStudent)
+            // console.log("Enrolled student: ", enrolledStudent)
             // Send an email notification to the enrolled student
             const emailResponse = await mailsender(
                 enrolledStudent.email,

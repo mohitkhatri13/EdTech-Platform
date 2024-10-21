@@ -49,7 +49,7 @@ exports.sendotp = async (req, res) => {
       otp
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(200).json({
       success: false,
       message: "Something Went Wrong",
@@ -103,7 +103,7 @@ exports.signup = async (req, res) => {
     //find most recent OTP
     const recentOTP = await OTP.find({ email })
       .sort({ createdAt: -1 })
-      .limit(1);
+      .limit(1);  // it limit to the number of documents to be returned 1
       // console.log(otp);
       // console.log(recentOTP);
      
@@ -133,7 +133,7 @@ exports.signup = async (req, res) => {
       about: null,
       secondarycontactnumber: null,
     });
-    console.log(profiledetails)
+    // console.log(profiledetails)
     const user = await User.create({
       firstName,
       lastName,
@@ -271,7 +271,6 @@ exports.changePassword = async (req, res) => {
     //if above wring try this
     // user.password = hashedPassword;
     // await user.save();
-
     //mail sending
     await mailsender(User.email, "Password Changed Successfully", newpassword);
 
@@ -286,11 +285,4 @@ exports.changePassword = async (req, res) => {
     });
   }
 };
-//changepassword
-// get data
-//oldpassword , new password , confirm new password
-//validation
 
-//update pwd in db
-//send email - passsword updated
-//return response

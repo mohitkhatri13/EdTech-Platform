@@ -21,7 +21,7 @@ const Navbar = () => {
     try {
       const result = await apiConnector("GET", categories.CATEGORIES_API);
       setSubLinks(result?.data?.allCategories);
-      console.log("Printing sublinks reault ", result?.data?.allCategories);
+      console.log("Printing sublinks result ", result?.data?.allCategories);
     } catch (error) {
       console.log("Could not fetch the catalog list ");
     }
@@ -60,9 +60,9 @@ const Navbar = () => {
                     >
                       <div
                         className=" z-[-10] flex z-19 absolute top-[-2px] left-[50%] translate-x-[-14px] z-200 h-2 w-2 flex-col rounded-md bg-richblack-5 p-4 text-richblack-900
-                       rotate-45 "
+                       rotate-45"
                       ></div>
-                      {subLinks.length ? (
+                      {Array.isArray(subLinks) && subLinks.length ? (
                         subLinks.map((subLink, i) => (
                           <Link
                             to={`/catalog/${subLink.name
@@ -159,7 +159,7 @@ const Navbar = () => {
                           className=" z-[-10] flex z-19 absolute top-[-2px] left-[50%] translate-x-[-14px] z-200 h-2 w-2 flex-col rounded-md bg-richblack-5 p-4 text-richblack-900
                        rotate-45 "
                         ></div>
-                        {subLinks.length ? (
+                        {Array.isArray(subLinks) && subLinks.length ? (
                           subLinks.map((subLink, i) => (
                             <Link
                               to={`/catalog/${subLink.name

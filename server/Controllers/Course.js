@@ -74,7 +74,7 @@ exports.createCourse = async (req, res) => {
     // console.log(categoryDetails)
     //upload on cloudinary
     const thumbnailImage = await uploadImageToCloudinary(thumbnail, process.env.FOLDER_NAME)
-    console.log(thumbnailImage)
+    // console.log(thumbnailImage)
     //create an entry for new course in database
     const newCourse = await Course.create({
       courseName: courseName,
@@ -101,7 +101,7 @@ exports.createCourse = async (req, res) => {
       { user: true })
 
 
-    //update the Category schema  -Homework
+    //update the Category schema  
     await Category.findByIdAndUpdate(
       { _id: category },   //konsi category me hai usko find kara id se
       {
@@ -419,7 +419,7 @@ exports.editCourse = async (req, res) => {
 
     // If Thumbnail Image is found, update it
     if (req.files) {
-      console.log("thumbnail update")
+      // console.log("thumbnail update")
       const thumbnail = req.files.thumbnailImage
       const thumbnailImage = await uploadImageToCloudinary(
         thumbnail,

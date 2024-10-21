@@ -13,7 +13,8 @@ exports.createRating = async (req, res) => {
         const courseDetails = await Course.findOne(
             {
                 _id: courseId,
-                studentsEnrolled: { $elemMatch: { $eq: userId } },
+                studentsEnrolled: { $elemMatch: { $eq: userId } },  // to ensure that the user
+                //  is actually enrolled. tha we use eleMatch 
             }
         );
         if (!courseDetails) {
@@ -141,6 +142,6 @@ exports.getAllRatingReview = async (req, res) => {
     }
 }
 
-// get review for course specific - homework 
+ 
 
 

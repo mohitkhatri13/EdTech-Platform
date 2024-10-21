@@ -2,6 +2,7 @@ const User = require("../models/usermodel");
 const mailsender = require("../utils/mailsender");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
+
 exports.resetPasswordToken = async (req, res) => {
   try {
     const { email } = req.body;
@@ -34,7 +35,9 @@ exports.resetPasswordToken = async (req, res) => {
     );
     console.log("DETAILS", updateddetails);
     //create url
-    const url = `http://localhost:3000/update-password/${token}`;
+    // create url  https://ed-tech-platform-psi-five.vercel.app/api/v1
+
+    const url = `https://ed-tech-platform-psi-five.vercel.app/api/v1/update-password/${token}`;
 
     //send mail to the user containg the email
     await mailsender(

@@ -32,8 +32,10 @@ async function sendverificationemail(email, otp) {
 }
 otpSchema.pre("save", async function (next) {
   // await sendverificationemail(this.email, this.otp);
-  console.log("New document saved to database");
+  // console.log("New document saved to database");
   // Only send an email when a new document is created
+
+  
   if (this.isNew) {
     await sendverificationemail(this.email, this.otp);
   }

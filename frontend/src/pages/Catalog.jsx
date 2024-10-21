@@ -99,8 +99,7 @@ function Catalog() {
                 ? "border-b border-b-yellow-25 text-yellow-25"
                 : "text-richblack-50"
             } cursor-pointer`}
-            onClick={() => setActive(2)}
-          >
+            onClick={() => setActive(2)}>
             New
           </p>
         </div>
