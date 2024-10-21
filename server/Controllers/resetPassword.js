@@ -36,8 +36,8 @@ exports.resetPasswordToken = async (req, res) => {
     console.log("DETAILS", updateddetails);
     //create url
     // create url  https://ed-tech-platform-psi-five.vercel.app/api/v1
-
-    const url = `https://ed-tech-platform-psi-five.vercel.app/api/v1/update-password/${token}`;
+    // https://ed-tech-platform-li17.vercel.app/update-password/5256465
+    const url = `https://ed-tech-platform-li17.vercel.app/update-password/${token}`;
 
     //send mail to the user containg the email
     await mailsender(
