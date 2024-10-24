@@ -166,7 +166,7 @@ export function resetPassword(password, confirmpassword, token, navigate) {
       }
 
       toast.success("Password Reset Successfully")
-      // navigate("/login")
+      navigate("/login")
     } catch (error) {
       console.log("RESETPASSWORD ERROR............", error)
       toast.error("Failed To Reset Password")

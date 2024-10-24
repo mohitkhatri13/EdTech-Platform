@@ -4,8 +4,10 @@ import { useLocation } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { resetPassword } from "../services/operations/authAPI";
+import { useNavigate } from "react-router-dom";
 
 const UpdatePassword = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
   const [formData, setFormData] = useState({
@@ -29,7 +31,7 @@ const UpdatePassword = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const token = location.pathname.split("/").at(-1);
-    dispatch(resetPassword(password, confirmpassword, token));
+    dispatch(resetPassword(password, confirmpassword, token,navigate));
   };
 
   return (
@@ -37,7 +39,7 @@ const UpdatePassword = () => {
       {loading ? (
         <div className="text-white">Loading ...</div>
       ) : (
-        <div className="bg-gray-800 text-white p-6 rounded-lg shadow-md w-full max-w-md">
+        <div className="bg-gray-800 text-black p-6 rounded-lg shadow-md w-full max-w-md">
           <h1 className="text-2xl font-bold mb-4">Choose New Password</h1>
           <p className="text-gray-400 mb-6">
             Almost done. Enter your new password and you're all set.
@@ -47,7 +49,7 @@ const UpdatePassword = () => {
               <p className="text-sm mb-1">New Password*</p>
               <div className="relative">
                 <input
-                  className="w-full p-2 text-gray-800 rounded-sm focus:outline-none focus:ring focus:ring-yellow-500"
+                  className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5"
                   required
                   type={showPassword ? "text" : "password"}
                   name="password"
@@ -68,7 +70,7 @@ const UpdatePassword = () => {
               <p className="text-sm mb-1">Confirm New Password*</p>
               <div className="relative">
                 <input
-                  className="w-full p-2 text-gray-800 rounded-sm focus:outline-none focus:ring focus:ring-yellow-500"
+                  className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-12 text-richblack-5"
                   required
                   type={showConfirmPassword ? "text" : "password"}
                   name="confirmpassword"
