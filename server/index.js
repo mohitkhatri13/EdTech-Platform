@@ -29,12 +29,30 @@ const fileUpload = require("express-fileupload");
 // const dotenv = require("dotenv")
 //middlewares
 app.use(express.json());
+// app.use(cookieParser());
+// app.use(cors())
+// app.use(cors({
+//        origin: 'http://localhost:3000/' // Replace with your frontend's URL
+//      }));
 app.use(cookieParser());
-app.use(cors())
+
+// Set up CORS to allow multiple origins
+const allowedOrigins = [
+  'http://localhost:3000', // Local development
+  'https://ed-tech-platform-li17.vercel.app' // Production frontend
+];
+
 app.use(cors({
-       origin: 'http://localhost:3000/' // Replace with your frontend's URL
-     }));
-     
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow cookies to be sent with requests
+}));
 app.use(fileUpload({
        useTempFiles:true,
        tempFileDir:"/tmp" }))

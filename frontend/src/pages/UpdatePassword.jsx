@@ -1,90 +1,103 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { FaEyeSlash } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { resetPassword } from "../services/operations/authAPI";
+
 const UpdatePassword = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [formData, setFormData] = useState({
     password: "",
     confirmpassword: "",
-  }); 
+  });
 
-  const [showPassword, setshowPassword] = useState(false);
-  const [showconfirmPassword, setshowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { loading } = useSelector((state) => state.auth);
 
   const { password, confirmpassword } = formData;
 
   const handleOnChange = (e) => {
-    setFormData((prevdata) => ({ 
-      ...prevdata,
+    setFormData((prevData) => ({
+      ...prevData,
       [e.target.name]: e.target.value,
-    }));  
+    }));
   };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const token = location.pathname.split("/").at(-1);
-    dispatch(resetPassword(password, confirmpassword, token ));
+    dispatch(resetPassword(password, confirmpassword, token));
   };
+
   return (
-    <div>
+    <div className="min-h-screen flex items-center justify-center bg-gray-900">
       {loading ? (
-        <div>Loading ...</div>
+        <div className="text-white">Loading ...</div>
       ) : (
-        <div>
-          <h1>Choose New Password</h1>
-          <p>Almost done. Enter your new password and you'r all set</p>
-          <form className="text-richblack-5"  onSubmit={handleOnSubmit}>
-            <label>
-              <p>New Password*</p>
-              <input
-              className="w-full text-richblack-700 px-2"
-                required
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={password}
-                onChange={handleOnChange}
-                placeholder="Password"
-              />
-              <span onClick={() => setshowPassword((prev) => !prev)}>
-                {" "}
-                {showPassword ? (
-                  <FaEyeSlash fontSize={24} />
-                ) : (
-                  <FaEye fontSize={24} />
-                )}{" "}
-              </span>
+        <div className="bg-gray-800 text-white p-6 rounded-lg shadow-md w-full max-w-md">
+          <h1 className="text-2xl font-bold mb-4">Choose New Password</h1>
+          <p className="text-gray-400 mb-6">
+            Almost done. Enter your new password and you're all set.
+          </p>
+          <form className="space-y-4" onSubmit={handleOnSubmit}>
+            <label className="block">
+              <p className="text-sm mb-1">New Password*</p>
+              <div className="relative">
+                <input
+                  className="w-full p-2 text-gray-800 rounded-sm focus:outline-none focus:ring focus:ring-yellow-500"
+                  required
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={password}
+                  onChange={handleOnChange}
+                  placeholder="Password"
+                />
+                <span
+                  className="absolute inset-y-0 right-3 flex items-center cursor-pointer text-gray-600"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
             </label>
 
-            <label>
-              <p>Confirm New Password</p>
-              <input className="w-full text-richblack-700 px-2"
-                required
-                type={showconfirmPassword ? "text" : "password"}
-                name="confirmpassword"
-                value={confirmpassword}
-                onChange={handleOnChange}
-                placeholder="Confirm Password"
-              />
-              <span onClick={() => setshowConfirmPassword((prev) => !prev)}>
-                {" "}
-                {showconfirmPassword ? (
-                  <FaEyeSlash fontSize={24} />
-                ) : (
-                  <FaEye fontSize={24} />
-                )}{" "}
-              </span>
+            <label className="block">
+              <p className="text-sm mb-1">Confirm New Password*</p>
+              <div className="relative">
+                <input
+                  className="w-full p-2 text-gray-800 rounded-sm focus:outline-none focus:ring focus:ring-yellow-500"
+                  required
+                  type={showConfirmPassword ? "text" : "password"}
+                  name="confirmpassword"
+                  value={confirmpassword}
+                  onChange={handleOnChange}
+                  placeholder="Confirm Password"
+                />
+                <span
+                  className="absolute inset-y-0 right-3 flex items-center cursor-pointer text-gray-600"
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                >
+                  {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
             </label>
 
-            <button type="Submit">Reset Password</button>
+            <button
+              type="submit"
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold py-2 rounded-md transition-all duration-200"
+            >
+              Reset Password
+            </button>
 
-            <div>
-              <Link to="/login">
-                <p>Back to Login</p>
+            <div className="mt-4">
+              <Link
+                to="/login"
+                className="text-yellow-500 hover:underline hover:text-yellow-400"
+              >
+                Back to Login
               </Link>
             </div>
           </form>
