@@ -9,7 +9,7 @@ import ConfirmationModal from "../../common/ConfirmationModal";
 import SidebarLink from "./SidebarLink";
 
 export default function Sidebar() {
-  const { user, loading: profileLoading } = useSelector(  (state) => state.profile);
+  const { user, loading: profileLoading } = useSelector((state) => state.profile);
   const { loading: authLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,8 +21,7 @@ export default function Sidebar() {
       <div className="grid h-[calc(100vh-3.5rem)] min-w-[220px] items-center border-r-[1px] border-r-richblack-700 bg-richblack-800">
         <div className="spinner"></div>
       </div>
-    );
-  }
+    );}
 
   return (
     <>

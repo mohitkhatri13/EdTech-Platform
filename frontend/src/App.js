@@ -85,14 +85,14 @@ function App() {
         <Route
           path="/about"
           element={
-           
-              <About />
-            
+
+            <About />
+
           }
         />
         <Route path="/contact" element={<Contact />} />
 
-
+            // these are nested routes 
         <Route element={
           <PrivateRoute>
             <Dashboard />
@@ -115,12 +115,12 @@ function App() {
                 <Route path="/dashboard/add-course" element={<AddCourse />} />
                 <Route path="/dashboard/my-courses" element={<MyCourses />} />
                 <Route path="/dashboard/edit-course/:courseId" element={<EditCourse />} />
-                <Route path="/dashboard/instructor" element={<Instructor/>}/>
+                <Route path="/dashboard/instructor" element={<Instructor />} />
               </>
             )
           }
         </Route>
-        
+
 
         <Route
           element={
@@ -139,7 +139,7 @@ function App() {
           )}
         </Route>
 
-       
+
 
 
 
