@@ -103,7 +103,7 @@ export default function NestedView({ handleChangeEditSectionName }) {
                   key={data?._id}
                   onClick={() => setViewSubSection(data)}
                   className="flex cursor-pointer items-center justify-between gap-x-3 border-b-2 border-b-richblack-600 py-2"
-                >   
+                >
                   <div className="flex items-center gap-x-3 py-2 ">
                     <RxDropdownMenu className="text-2xl text-richblack-50" />
                     <p className="font-semibold text-richblack-50">

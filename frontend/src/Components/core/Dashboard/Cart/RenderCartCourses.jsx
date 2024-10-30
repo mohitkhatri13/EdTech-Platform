@@ -15,14 +15,15 @@ const RenderCartCourses = () => {
         <div>
           <div>
             <img src={course?.thumbnail} alt="image unavaiable" />
-            <div> 
+            <div>
               <p>{course?.courseName}</p>
               <p>{course?.category?.name}</p>
               <div>
                 <span>4.8</span>
+                {/* // we have to implement the average rating */}
                 <ReactStars
                   count={5}
-                  size={20}
+                  size={20}  
                   edit={false}
                   activeColor="#ffd700"
                   emtpyIcon={<GiNinjaStar />}

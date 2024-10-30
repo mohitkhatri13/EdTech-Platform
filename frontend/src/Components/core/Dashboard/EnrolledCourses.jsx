@@ -30,7 +30,7 @@ export default function EnrolledCourses() {
       } catch (error) {
         console.log("Could not fetch enrolled courses.");
       }
-    })();
+    })();     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

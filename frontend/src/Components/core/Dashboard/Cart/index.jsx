@@ -1,18 +1,18 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 
-import RenderCartCourses from "./RenderCartCourses"
-import RenderTotalAmount from "./RenderTotalAmount"
+import RenderCartCourses from "./RenderCartCourses";
+import RenderTotalAmount from "./RenderTotalAmount";
 
 export default function Cart() {
-  const { total, totalItems } = useSelector((state) => state.cart)
-  const { paymentLoading } = useSelector((state) => state.course)
+  const { total, totalItems } = useSelector((state) => state.cart);
+  const { paymentLoading } = useSelector((state) => state.course);
 
   if (paymentLoading)
     return (
       <div className="flex h-screen items-center justify-center">
         <div className="spinner"></div>
       </div>
-    )
+    );
 
   return (
     <>
@@ -31,5 +31,5 @@ export default function Cart() {
         </p>
       )}
     </>
-  )
+  );
 }
