@@ -39,7 +39,7 @@ To fork the repository:
 Once the repository is forked, clone it to your local machine:
 
 1. Open your terminal.
-2. Run the following command, replacing `your-username` with your GitHub username:
+2. Run the following command
    ```bash
    git clone https://github.com/mohitkhatri13/EdTech-Platform
    ```
